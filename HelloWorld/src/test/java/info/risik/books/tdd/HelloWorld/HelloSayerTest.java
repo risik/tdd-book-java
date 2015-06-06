@@ -20,4 +20,10 @@ public class HelloSayerTest {
         HelloSayer sayer = new HelloSayer("World");
         assertEquals("World", sayer.getWhom());
     }
+
+    @Test
+    public void testGreetingString() throws Exception {
+        HelloSayer sayer = new HelloSayer("World");
+        assertEquals("Hello \"World\"", sayer.getGreetingString());
+    }
 }
