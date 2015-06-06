@@ -16,6 +16,6 @@ public class HelloSayer {
     }
 
     public String getGreetingString() {
-        return "Hello \"World\"";
+        return String.format("Hello \"%s\"", whom);
     }
 }
