@@ -12,6 +12,8 @@ subprojects {
 
     dependencies {
         testCompile 'junit:junit:4.+'
+        testCompile 'com.pholser:junit-quickcheck-core:0.5+'
+        testCompile 'com.pholser:junit-quickcheck-generators:0.5+'
     }
 }
 
