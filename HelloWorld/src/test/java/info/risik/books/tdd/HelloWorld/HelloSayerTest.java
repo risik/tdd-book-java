@@ -23,9 +23,10 @@ public class HelloSayerTest {
 
     @Theory
     public void testCreating(
-            @ForAll String whom
-    ) {
-        new HelloSayerInplace(whom);
+            @ForAll String whom,
+            @ForAll @ValuesOf HelloSayerType sayerType
+    ) throws Exception {
+        getFactory(sayerType, whom);
     }
 
     @Theory
@@ -39,9 +40,10 @@ public class HelloSayerTest {
 
     @Theory
     public void greetingString(
-            @ForAll String whom
-    ) {
-        HelloSayer sayer = new HelloSayerInplace(whom);
+            @ForAll String whom,
+            @ForAll @ValuesOf HelloSayerType sayerType
+    ) throws Exception {
+        HelloSayer sayer = getFactory(sayerType, whom);
         assertEquals(String.format("Hello \"%s\"", whom), sayer.getGreetingString());
     }
 
