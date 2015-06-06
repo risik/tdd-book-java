@@ -16,21 +16,19 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Theories.class)
 public class HelloSayerTest {
 
-    @Test
-    public void testCreating() throws Exception {
-        new HelloSayer("World");
+    @Theory
+    public void testCreating(
+            @ForAll String whom
+    ) {
+        new HelloSayer(whom);
     }
 
-    @Test
-    public void testWhomGetter() throws Exception {
-        HelloSayer sayer = new HelloSayer("World");
-        assertEquals("World", sayer.getWhom());
-    }
-
-    @Test
-    public void testGreetingString() throws Exception {
-        HelloSayer sayer = new HelloSayer("World");
-        assertEquals("Hello \"World\"", sayer.getGreetingString());
+    @Theory
+    public void testWhomGetter(
+            @ForAll String whom
+    ) {
+        HelloSayer sayer = new HelloSayer(whom);
+        assertEquals(whom, sayer.getWhom());
     }
 
     @Theory
