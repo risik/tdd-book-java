@@ -10,3 +10,7 @@ subprojects {
         mavenCentral()
     }
 }
+
+project(':HelloWorld') {
+
+}
