@@ -14,4 +14,10 @@ public class HelloSayerTest {
     public void testCreating() throws Exception {
         new HelloSayer("World");
     }
+
+    @Test
+    public void testWhomGetter() throws Exception {
+        HelloSayer sayer = new HelloSayer("World");
+        assertEquals("World", sayer.getWhom());
+    }
 }
