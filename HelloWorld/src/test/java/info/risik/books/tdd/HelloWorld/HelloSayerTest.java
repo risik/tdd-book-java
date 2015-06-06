@@ -1,7 +1,6 @@
 package info.risik.books.tdd.HelloWorld;
 
 import com.pholser.junit.quickcheck.ForAll;
-import org.junit.Test;
 import org.junit.contrib.theories.Theories;
 import org.junit.contrib.theories.Theory;
 import org.junit.runner.RunWith;
