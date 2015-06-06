@@ -19,6 +19,7 @@ public class HelloSayerTest {
     enum HelloSayerType {
         InPlace,
         AtOnce,
+        Lazy,
     }
 
     @Theory
@@ -53,6 +54,8 @@ public class HelloSayerTest {
                 return new HelloSayerInplace(whom);
             case AtOnce:
                 return new HelloSayerAtOnce(whom);
+            case Lazy:
+                return new HelloSayerLazy(whom);
         }
         throw new Exception("Unknown HelloSayerType");
     }
