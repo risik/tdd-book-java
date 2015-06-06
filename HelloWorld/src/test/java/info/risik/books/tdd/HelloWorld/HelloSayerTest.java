@@ -19,14 +19,14 @@ public class HelloSayerTest {
     public void testCreating(
             @ForAll String whom
     ) {
-        new HelloSayer(whom);
+        new HelloSayerInplace(whom);
     }
 
     @Theory
     public void testWhomGetter(
             @ForAll String whom
     ) {
-        HelloSayer sayer = new HelloSayer(whom);
+        HelloSayer sayer = new HelloSayerInplace(whom);
         assertEquals(whom, sayer.getWhom());
     }
 
@@ -34,7 +34,7 @@ public class HelloSayerTest {
     public void greetingString(
             @ForAll String whom
     ) {
-        HelloSayer sayer = new HelloSayer(whom);
+        HelloSayer sayer = new HelloSayerInplace(whom);
         assertEquals(String.format("Hello \"%s\"", whom), sayer.getGreetingString());
     }
 }
