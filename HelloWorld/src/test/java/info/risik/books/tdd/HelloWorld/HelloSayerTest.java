@@ -1,6 +1,7 @@
 package info.risik.books.tdd.HelloWorld;
 
 import com.pholser.junit.quickcheck.ForAll;
+import com.pholser.junit.quickcheck.generator.ValuesOf;
 import org.junit.contrib.theories.Theories;
 import org.junit.contrib.theories.Theory;
 import org.junit.runner.RunWith;
@@ -15,6 +16,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Theories.class)
 public class HelloSayerTest {
 
+    enum HelloSayerType {
+        InPlace,
+        AtOnce,
+    }
+
     @Theory
     public void testCreating(
             @ForAll String whom
@@ -24,9 +30,10 @@ public class HelloSayerTest {
 
     @Theory
     public void testWhomGetter(
-            @ForAll String whom
-    ) {
-        HelloSayer sayer = new HelloSayerInplace(whom);
+            @ForAll String whom,
+            @ForAll @ValuesOf HelloSayerType sayerType
+    ) throws Exception {
+        HelloSayer sayer = getFactory(sayerType, whom);
         assertEquals(whom, sayer.getWhom());
     }
 
@@ -36,5 +43,15 @@ public class HelloSayerTest {
     ) {
         HelloSayer sayer = new HelloSayerInplace(whom);
         assertEquals(String.format("Hello \"%s\"", whom), sayer.getGreetingString());
+    }
+
+    private HelloSayer getFactory(HelloSayerType type, String whom) throws Exception {
+        switch (type) {
+            case InPlace:
+                return new HelloSayerInplace(whom);
+            case AtOnce:
+                return new HelloSayerAtOnce(whom);
+        }
+        throw new Exception("Unknown HelloSayerType");
     }
 }
