@@ -14,4 +14,8 @@ public class HelloSayer {
     public String getWhom() {
         return whom;
     }
+
+    public String getGreetingString() {
+        return "Hello \"World\"";
+    }
 }
