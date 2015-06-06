@@ -1,0 +1,12 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
+subprojects {
+
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+}
