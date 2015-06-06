@@ -8,7 +8,7 @@ public class HelloSayer {
     private String whom;
 
     public HelloSayer(String whom) {
-
+        this.whom = whom;
     }
 
     public String getWhom() {
