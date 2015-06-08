@@ -5,3 +5,9 @@
 *.war
 *.ear
 .gradle
+
+build
+
+# IDEA's project files
+*.iml
+.idea

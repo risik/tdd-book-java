@@ -5,8 +5,41 @@ task wrapper(type: Wrapper) {
 subprojects {
 
     apply plugin: 'java'
+    apply plugin: 'jacoco'
 
     repositories {
         mavenCentral()
     }
+
+    dependencies {
+        testCompile 'junit:junit:4.+'
+        testCompile 'com.pholser:junit-quickcheck-core:0.5+'
+        testCompile 'com.pholser:junit-quickcheck-generators:0.5+'
+    }
+
+    jacoco {
+        toolVersion = "0.7.4.201502262128"
+        reportsDir = file("$buildDir/customJacocoReportDir")
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled false
+            csv.enabled false
+            html.destination "${buildDir}/jacocoHtml"
+        }
+    }
+
+    test {
+        jacoco {
+            append = false
+            destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+            classDumpFile = file("$buildDir/jacoco/classpathdumps")
+        }
+    }
+
+}
+
+project(':HelloWorld') {
+
 }
